@@ -359,10 +359,15 @@ body {
   }
 }
 
-.active-product {
+.product {
   position: absolute;
   top: 0;
   left: 215px;
+  display: none;
+}
+
+.active-product {
+  display: block;
 }
 
 
