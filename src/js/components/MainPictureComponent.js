@@ -1,7 +1,4 @@
 export default class MainPictureComponent {
-  constructor(props) {
-    this.props = props;
-  }
   renderPlace = document.querySelector(".MainPicture");
 
   handle() {
@@ -9,11 +6,9 @@ export default class MainPictureComponent {
   }
 
   render(){
-    const {url, darkUrl} = this.props;
-
     this.renderPlace.innerHTML = `
-      <img src="${url}" alt="main" class="main-picture__img active">
-      <img src="${darkUrl}" alt="main" class="main-picture__img ">
+      <img src="./assets/img/main.png" alt="main" class="main-picture__img active">
+      <img src="./assets/img/dark-img.png" alt="main" class="main-picture__img ">
     `;
     this.handle();
   }

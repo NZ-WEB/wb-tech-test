@@ -3,9 +3,6 @@ import Products from "../Products";
 import State from "../State";
 
 export default class CalculatorComponent {
-  constructor(props) {
-    this.props = props;
-  }
 
   renderPlace = document.querySelector(".select-product");
 
@@ -43,7 +40,7 @@ export default class CalculatorComponent {
     });
   }
 
-  render(props = this.props) {
+  render(props = []) {
     let productArr = props.map(item => {
       return `
         <div data-id="${item.id}" class="select-product__item">
