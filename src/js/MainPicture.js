@@ -1,22 +1,24 @@
 import Products from "./Products";
 
 export default class MainPicture {
-  products = new Products();
+  products = new Products().getProducts();
 
   getMainPicture() {
     return  document.querySelectorAll(".main-picture__img");
   }
 
-  setDayMode() {
+  setDayMode(activeIndex) {
     const pictures = this.getMainPicture();
     pictures[0].classList.add("active");
     pictures[1].classList.remove("active");
-    console.log(pictures);
+
+    this.products[activeIndex].classList.add("active-product");
+
   }
 
   setNightMode() {
     const pictures = this.getMainPicture();
-    const products = this.products.getProducts();
+    const products = this.products;
 
     pictures[1].classList.add("active");
     pictures[0].classList.remove("active");
