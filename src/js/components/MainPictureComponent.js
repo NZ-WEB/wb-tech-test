@@ -7,8 +7,8 @@ export default class MainPictureComponent {
 
   render(){
     this.renderPlace.innerHTML = `
-      <img src="./assets/img/main.png" alt="main" class="main-picture__img active">
-      <img src="./assets/img/dark-img.png" alt="main" class="main-picture__img ">
+      <img src="./assets/img/main.png" alt="main" class="main-picture__img active animated animate__fadeIn">
+      <img src="./assets/img/dark-img.png" alt="main" class="main-picture__img animated animate__fadeIn">
     `;
     this.handle();
   }

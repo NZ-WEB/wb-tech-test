@@ -17,7 +17,7 @@ const activeProduct = new ActiveProduct();
 
 productsApi.getAll()
   .then(res => {
-    res.length = 4; // Set Limit
+    res.length = 3; // Set Limit
     return res;
   })
   .then(response => {
