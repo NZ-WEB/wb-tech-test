@@ -2,37 +2,33 @@ import MainPicture from "./MainPicture";
 import State from "./State";
 import Products from "./Products";
 import ProductsApi from "./api/api";
+import MainPictureComponent from "./components/MainPictureComponent";
+import CalculatorComponent from "./components/CalculatorComponent";
 
-const sunBtn = document.querySelector(".select-product__button-item_sun");
-const nightBtn =   document.querySelector(".select-product__button-item_moon");
-const productButtons = document.querySelectorAll(".select-product__item");
-const mainPicture = new MainPicture();
-const products = new Products();
-
-const activeProductState = new State(0);
-const isNightMode = new State(false);
 const productsApi = new ProductsApi();
+const productsState = new State([]);
 
-productsApi.getAll();
+productsApi.getAll().then(response => {
+  productsState.setState(JSON.parse(response));
 
-sunBtn.addEventListener("click", () => {
-  mainPicture.setDayMode(activeProductState.getItem());
+  calculatorComponent.render(productsState.getItem());
 });
 
-nightBtn.addEventListener("click", () => {
-  mainPicture.setNightMode();
-  products.setActive(3);
-  isNightMode.setState(true);
-});
+// Components Start
+const mainPictureComponent = new MainPictureComponent({url: "./assets/img/main.png", darkUrl: "./assets/img/dark-img.png"});
+mainPictureComponent.render();
 
-productButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    activeProductState.setState(button.dataset.id);
+const calculatorComponent = new CalculatorComponent(productsState.getItem());
+calculatorComponent.render();
 
-    if (button.dataset.id !== 3 && isNightMode) {
-      mainPicture.setDayMode(button.dataset.id - 1);
-    }
+// Components End
 
-    products.setActive(button.dataset.id);
-  });
-});
+//  Api start
+
+
+
+
+
+
+
+
