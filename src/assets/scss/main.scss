@@ -177,7 +177,7 @@ body {
 
     margin-bottom: 1.5em;
 
-    color: #000000;
+    color: #5e5e5e;
 
     &:last-child {
       margin-bottom: 0;
@@ -356,13 +356,24 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
+    height: 90%;
   }
 }
 
-.active-product {
+.product {
+  display: none;
+  width: 60%;
+}
+
+.ActiveProduct {
   position: absolute;
   top: 0;
   left: 215px;
+}
+
+
+.active-product {
+  display: block;
 }
 
 

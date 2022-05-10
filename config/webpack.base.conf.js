@@ -40,6 +40,13 @@ module.exports = {
       test: /\.js$/,
       loader: "babel-loader",
       exclude: isProduction ? [/node_modules/, /\.smart-gread-layer$/] : /node_modules/,
+      options: {
+        "plugins": [
+          [
+            "@babel/plugin-proposal-class-properties"
+          ]
+        ]
+      }
     },
     {
       // Fonts
@@ -102,7 +109,7 @@ module.exports = {
       template: `${PATHS.src}/index.html`,
       filename: "./index.html"
     }),
-	new HtmlPluginRemove(/<!--deletestart-->[\s\S]*<!--deleteend-->/gi),
+    new HtmlPluginRemove(/<!--deletestart-->[\s\S]*<!--deleteend-->/gi),
     new CopyWebpackPlugin([
       { from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
       { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
