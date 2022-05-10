@@ -6,7 +6,7 @@ export default class CalculatorComponent {
 
   renderPlace = document.querySelector(".select-product");
 
-  handle() {
+  handle(props = []) {
     const sunBtn = document.querySelector(".select-product__button-item_sun");
     const nightBtn =   document.querySelector(".select-product__button-item_moon");
     const productButtons = document.querySelectorAll(".select-product__item");
@@ -18,22 +18,28 @@ export default class CalculatorComponent {
     const isNightMode = new State(false);
 
     sunBtn.addEventListener("click", () => {
-      mainPicture.setDayMode(activeProductState.getItem());
+      mainPicture.setDayMode(activeProductState.getItem() - 1);
     });
 
     nightBtn.addEventListener("click", () => {
-      mainPicture.setNightMode();
-      products.setActive(3);
-      isNightMode.setState(true);
+      props.forEach(item => {
+        if (item.isDarkMode && item.id === +activeProductState.getItem()) {
+          mainPicture.setNightMode();
+          isNightMode.setState(true);
+        }
+      });
     });
 
     productButtons.forEach(button => {
       button.addEventListener("click", () => {
         activeProductState.setState(button.dataset.id);
 
-        if (button.dataset.id !== 3 && isNightMode) {
-          mainPicture.setDayMode(button.dataset.id - 1);
-        }
+        props.forEach(item => {
+          if (!item.isDarkMode && isNightMode.getItem() && item.id === +activeProductState.getItem()) {
+            isNightMode.setState(false);
+            mainPicture.setDayMode(activeProductState.getItem() - 1);
+          }
+        });
 
         products.setActive(button.dataset.id);
       });
@@ -58,6 +64,6 @@ export default class CalculatorComponent {
         <button type="button" class="select-product__button-item select-product__button-item_moon"></button>
       </div>
     `;
-    this.handle();
+    this.handle(props);
   }
 }

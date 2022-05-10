@@ -13,7 +13,6 @@ export default class MainPicture {
     pictures[1].classList.remove("active");
 
     this.products[activeIndex].classList.add("active-product");
-
   }
 
   setNightMode() {
