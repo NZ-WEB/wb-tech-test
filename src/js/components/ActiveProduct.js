@@ -12,8 +12,6 @@ export default class ActiveProduct {
       return `<img data-id="${item.id}" src="${item.image}" alt="product" class="product">`;
     });
 
-    newStr.length = 3;
-
     newStr = newStr.join("");
 
 

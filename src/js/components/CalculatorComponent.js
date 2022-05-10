@@ -47,7 +47,7 @@ export default class CalculatorComponent {
         });
 
         products.setActive(button.dataset.id);
-        specificationsComponent.render(props[activeProductState.getItem()]);
+        specificationsComponent.render(props[activeProductState.getItem() - 1]);
       });
     });
   }
@@ -60,7 +60,6 @@ export default class CalculatorComponent {
         </div>
       `;
     });
-    productArr.length = 3;
     productArr = productArr.join("");
 
     this.renderPlace.innerHTML = `

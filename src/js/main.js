@@ -15,18 +15,21 @@ const calculatorComponent = new CalculatorComponent(specificationsComponent);
 const activeProduct = new ActiveProduct();
 // Init Components END
 
+productsApi.getAll()
+  .then(res => {
+    res.length = 4; // Set Limit
+    return res;
+  })
+  .then(response => {
+    productsState.setState(response);
 
-productsApi.getAll().then(response => {
-  productsState.setState(JSON.parse(response));
+    activeProduct.render(productsState.getItem());
+    mainPictureComponent.render(productsState.getItem());
+    calculatorComponent.render(productsState.getItem());
+    specificationsComponent.render(productsState.getItem()[0]);
 
-  activeProduct.render(productsState.getItem());
-  mainPictureComponent.render(productsState.getItem());
-  calculatorComponent.render(productsState.getItem());
-  specificationsComponent.render(productsState.getItem()[0]);
-
-
-  return response;
-}).then(r => console.log(JSON.parse(r)));
+    return response;
+  });
 
 
 

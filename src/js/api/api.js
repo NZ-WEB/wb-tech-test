@@ -1,7 +1,7 @@
 export default class ProductsApi {
   getAll() {
     return new Promise((res) => {
-      res(JSON.stringify(
+      res(
         [
           {
             "id": 1,
@@ -52,7 +52,7 @@ export default class ProductsApi {
             "isDarkMode": false
           }
         ]
-      ));
+      );
     });
   }
 }
