@@ -17,7 +17,6 @@ export default class Products {
 
     productImages.forEach(image => {
       image.classList.remove("active-product");
-
       if (image.dataset.id === active) {
         image.classList.add("active-product");
       }

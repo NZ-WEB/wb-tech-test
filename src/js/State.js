@@ -7,6 +7,7 @@ export default class State {
     this.item = newItem;
   }
 
+
   getItem() {
     return this.item;
   }

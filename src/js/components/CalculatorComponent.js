@@ -3,6 +3,9 @@ import Products from "../Products";
 import State from "../State";
 
 export default class CalculatorComponent {
+  constructor(component) {
+    this.component = component;
+  }
 
   renderPlace = document.querySelector(".select-product");
 
@@ -11,11 +14,13 @@ export default class CalculatorComponent {
     const nightBtn =   document.querySelector(".select-product__button-item_moon");
     const productButtons = document.querySelectorAll(".select-product__item");
 
+    const activeProductState = new State(0);
+    const isNightMode = new State(false);
+
     const mainPicture = new MainPicture();
     const products = new Products();
 
-    const activeProductState = new State(0);
-    const isNightMode = new State(false);
+    const specificationsComponent = this.component;
 
     sunBtn.addEventListener("click", () => {
       mainPicture.setDayMode(activeProductState.getItem() - 1);
@@ -42,6 +47,7 @@ export default class CalculatorComponent {
         });
 
         products.setActive(button.dataset.id);
+        specificationsComponent.render(props[activeProductState.getItem()]);
       });
     });
   }
