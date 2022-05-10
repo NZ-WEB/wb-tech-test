@@ -1,6 +1,7 @@
 import MainPicture from "./MainPicture";
 import State from "./State";
 import Products from "./Products";
+import ProductsApi from "./api/api";
 
 const sunBtn = document.querySelector(".select-product__button-item_sun");
 const nightBtn =   document.querySelector(".select-product__button-item_moon");
@@ -10,6 +11,9 @@ const products = new Products();
 
 const activeProductState = new State(0);
 const isNightMode = new State(false);
+const productsApi = new ProductsApi();
+
+productsApi.getAll();
 
 sunBtn.addEventListener("click", () => {
   mainPicture.setDayMode(activeProductState.getItem());
