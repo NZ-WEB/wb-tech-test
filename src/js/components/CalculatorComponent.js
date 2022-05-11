@@ -13,6 +13,7 @@ export default class CalculatorComponent {
     const sunBtn = document.querySelector(".select-product__button-item_sun");
     const nightBtn =   document.querySelector(".select-product__button-item_moon");
     const productButtons = document.querySelectorAll(".select-product__item");
+    const activeProductInCalc = document.querySelector(".content__active-product");
 
     const activeProductState = new State(0);
     const isNightMode = new State(false);
@@ -21,6 +22,9 @@ export default class CalculatorComponent {
     const products = new Products();
 
     const specificationsComponent = this.component;
+
+    activeProductInCalc.innerHTML = `<img src="${props[activeProductState.getItem()].image}" />`;
+
 
     sunBtn.addEventListener("click", () => {
       mainPicture.setDayMode(activeProductState.getItem() - 1);
@@ -47,7 +51,12 @@ export default class CalculatorComponent {
         });
 
         products.setActive(button.dataset.id);
-        specificationsComponent.render(props[activeProductState.getItem() - 1]);
+
+        const activeItem = props[activeProductState.getItem() - 1];
+
+        specificationsComponent.render(activeItem);
+
+        activeProductInCalc.innerHTML = `<img src="${activeItem.image}" />`;
       });
     });
   }
