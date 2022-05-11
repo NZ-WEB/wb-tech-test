@@ -24,22 +24,9 @@
   justify-content: center;
 }
 
-.logo {
-  @include col();
-  @include size-xs(2); /* при 320px - На телефоне с маленьким экраном по ... колонок */
-  @include size-sm(3); /* при 576px - На телефоне по ... колонок*/
-  @include size-md(4); /* при 768px - На планшете по ... колонок*/
-  @include size-lg(5); /* при 992px - На планшете по ... колонок */
-  @include size-xl(6); /* при 1200px - На планшете по ... колонок */
-  @include size(2);
-  background-color: yellow;
-  height: 6rem;
-}
-
 body {
   background: #DBEEEE;
   font-family: 'SF Compact Display', sans-serif;
-
 }
 
 .container {
@@ -67,7 +54,17 @@ body {
   }
 
   &__list-item {
-    margin-right: 64px;
+    margin-right: 50px;
+
+    &:nth-child(1) {
+      margin-right: 62px;
+    }
+    &:nth-child(2) {
+      margin-right: 52px;
+    }
+    &:nth-child(3) {
+      margin-right: 36px;
+    }
 
     &:last-child {
       margin-right: 0;
@@ -77,7 +74,7 @@ body {
   &__link {
     font-style: normal;
     font-weight: 400;
-    font-size: 21px;
+    font-size: 22px;
     line-height: 133.84%;
 
     letter-spacing: 0.055em;
@@ -121,12 +118,20 @@ body {
           'desc image'
           'calculator image';
 
+  &__active-product {
+    position: absolute;
+    top: 0;
+    left: 264px;
+    width: 158px;
+  }
+
   &__item {
     &_description {
       grid-area: desc;
       display: flex;
       align-items: center;
     }
+
     &_image {
       grid-area: image;
       z-index: 1;
@@ -197,15 +202,17 @@ body {
 
 .properties {
   position: absolute;
-  left: -85px;
+  left: -82px;
   top: 25px;
 
   &__list {
     width: 280px;
+    margin-bottom: 16px;
+    margin-left: 4px;
   }
 
   &__item {
-    margin-bottom: 1em;
+    margin-bottom: 1.28em;
     display: flex;
     align-items: flex-end;
     flex-wrap: wrap;
@@ -235,8 +242,8 @@ body {
   }
 
   &__circle {
-    width: 450px;
-    height: 450px;
+    width: 455px;
+    height: 455px;
     background: #F0E0C9;
     border-radius: 50%;
     position: relative;
@@ -255,7 +262,7 @@ body {
   position: absolute;
   bottom: 36px;
   left: -164px;
-  padding: 17px 17px 93px;
+  padding: 10px 17px 90px;
   border-radius: 14px 0 0 14px;
   background: #BDDDDD;
 
@@ -275,7 +282,7 @@ body {
 
   &__item {
     width: 133px;
-    height: 133px;
+    height: 130px;
     background: #BDDDDD;
     border-radius: 14px;
 
