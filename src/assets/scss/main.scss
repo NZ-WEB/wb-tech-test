@@ -235,9 +235,8 @@ body {
     }
 
     &-text {
-      margin-left: 4px;
       font-weight: 300;
-      margin-bottom: 2px;
+      margin-top: 1px;
     }
   }
 
@@ -290,6 +289,7 @@ body {
     margin-bottom: 20px;
 
     transition: all 0.4s ease;
+    cursor: pointer;
 
     &:last-child {
       margin-bottom: 10px;
