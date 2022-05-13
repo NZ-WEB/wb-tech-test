@@ -24,6 +24,7 @@ export default class CalculatorComponent {
     const specificationsComponent = this.component;
 
     activeProductInCalc.innerHTML = `<img src="${props[activeProductState.getItem()].image}" />`;
+    products.setActive(1);
 
 
     sunBtn.addEventListener("click", () => {
